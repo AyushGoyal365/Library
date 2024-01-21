@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <title>Bootstrap Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+<nav class="navbar navbar-expand-lg bg-info navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TTOFL</a>
+    <ul class="navbar-nav d-flex flex-row me-1">
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link text-white" href="{% url 'allbooks' %}"><i class="fas fa-envelope mx-1"></i> All Books</a>
+      </li>
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link text-white" href="{% url 'yourbooks' %}"><i class="fas fa-envelope mx-1"></i> Your Books</a>
+      </li>
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link text-white" href="{% url 'addnewbook' %}"><i class="fas fa-cog mx-1"></i> Add New Book</a>
+      </li>
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link text-white" href="{% url 'authoraccount' %}"><i class="fas fa-cog mx-1"></i> My Account</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<form method="GET" action="{% url 'allbooks' %}">
+  <label for="genre">Filter by Genre:</label>
+  <select name="genre" id="genre">
+    <option value="">All Genres</option>
+    
+
+    {% for genre in genres %}
+      <option value="{{ genre }}">{{ genre }}</option>
+    {% endfor %}
+  </select>
+ 
+
+  <button type="submit">Apply Filters</button>
+</form>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr no.</th>
+        <th scope="col">Books</th>
+        <th scope="col">Author</th>
+        <th scope="col">Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ book.name }}</td>
+          <td>{{ book.author.username }}</td>
+          <td>{{ book.genre }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>  

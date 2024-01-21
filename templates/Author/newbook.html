@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+    <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+   
+        <div class="container-fluid">
+            
+            <a class="navbar-brand" href="#">TTOFL</a>
+    
+            <ul class="navbar-nav d-flex flex-row me-1">
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link text-white" href="{% url 'allbooks'%}"><i class="fas fa-envelope mx-1"></i> All Books</a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link text-white" href="{% url 'yourbooks'%}"><i class="fas fa-envelope mx-1"></i> Your Books</a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link text-white" href="{% url 'addnewbook'%}"><i class="fas fa-cog mx-1"></i> Add New Book</a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link text-white" href="{% url 'authoraccount'%}"><i class="fas fa-cog mx-1"></i> My Account</a>
+                </li>
+            </ul>
+        </div>
+    
+      
+    </nav>
+    
+
+    
+    <form class="row g-3" method="post">
+      {% csrf_token %}
+
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Name Of Book</label>
+        <input type="bookname" class="form-control" name="bookname" id="inputname">
+      </div>
+      <div class="col-md-6">
+        <label for="inputpage" class="form-label">Number of Pages</label>
+        <input type="page" class="form-control" name="page" id="inputpage">
+      </div>
+      <select class="form-select" aria-label="Default select example" name="genre">
+        <option selected>Genre</option>
+        <option value="Friction">Fiction</option>
+        <option value="Novel">Novel</option>
+        <option value="Mystery">Mystery</option>
+      </select>
+      
+      <div>
+        <label for="profileImage">Profile Image:</label>
+        <input type="file" id="profileImage" name="profileImage" accept="image/*">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </div>
+    </form>
+    
+   
+  </body>
+</html>

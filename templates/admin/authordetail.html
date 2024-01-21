@@ -1,0 +1,102 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+
+   
+<nav class="navbar navbar-expand-lg bg-info navbar-dark">
+   
+    <div class="container-fluid">
+        
+        <a class="navbar-brand" href="#">TTOFL</a>
+
+        <ul class="navbar-nav d-flex flex-row me-1">
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link text-white" href="{% url 'aallbooks'%}"><i class="fas fa-envelope mx-1"></i> All Books</a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link text-white" href="{% url 'allauthors'%}"><i class="fas fa-cog mx-1"></i> All Authors</a>
+            </li>
+            
+          
+        </ul>
+    </div>
+
+  
+</nav>
+
+    
+  </body>
+</html>
+
+    
+  </body>
+</html>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<!-- Font Awesome CSS -->
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+<div class="Author-profile py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent text-center">
+                {% if user.profile.profile_image %}
+                <img class="profile_img" src="{{ user.profile.profile_image.url }}" alt="Author Profile Image">
+            {% else %}
+                <img class="profile_img" src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Image">
+            {% endif %}
+              <h3>{{user.username}}</h3>
+            </div>
+            <div class="card-body">
+              <p class="mb-0"><strong class="pr-1">Author ID:</strong>{{ user.profile.author_id }}</p>
+            
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Email</th>
+                  <td width="2%">:</td>
+                  <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Phone No.	</th>
+                  <td width="2%">:</td>
+                  <td>{{user.profile.phone_number}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">City</th>
+                  <td width="2%">:</td>
+                  <td>{{user.profile.city}}</td>
+                </tr>
+                
+                
+              </table>
+            </div>
+          </div>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
